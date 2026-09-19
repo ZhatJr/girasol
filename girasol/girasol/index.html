@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#090d2a">
+  <meta name="description" content="Un girasol que florece al atardecer.">
+  <title>Girasol 🌻</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="js/girasol.js" defer></script>
+</head>
+<body>
+
+  <div class="escena" id="escena" role="img" aria-label="Un girasol que florece al atardecer, rodeado de plantitas">
+
+    <!-- Cielo y estrellas -->
+    <div class="cielo"></div>
+    <div class="estrellas" id="estrellas"></div>
+
+    <!-- Colinas (su contorno lo calcula girasol.js) -->
+    <svg class="capa" viewBox="0 0 400 800" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+      <defs>
+        <linearGradient id="grad-lejana" gradientUnits="userSpaceOnUse" x1="0" y1="570" x2="0" y2="760">
+          <stop offset="0" stop-color="#6b4d88"/>
+          <stop offset="1" stop-color="#3a2f63"/>
+        </linearGradient>
+        <linearGradient id="grad-media" gradientUnits="userSpaceOnUse" x1="0" y1="620" x2="0" y2="790">
+          <stop offset="0" stop-color="#3b5f72"/>
+          <stop offset="1" stop-color="#1f3346"/>
+        </linearGradient>
+        <linearGradient id="grad-cercana" gradientUnits="userSpaceOnUse" x1="0" y1="682" x2="0" y2="800">
+          <stop offset="0" stop-color="#3d7f40"/>
+          <stop offset="1" stop-color="#1c4526"/>
+        </linearGradient>
+      </defs>
+      <path id="colina-lejana" class="colina" style="--d: 0.15s" fill="url(#grad-lejana)" stroke="#ffb98f" stroke-opacity="0.45" stroke-width="1.2"/>
+      <path id="colina-media" class="colina" style="--d: 0.3s" fill="url(#grad-media)" stroke="#ffc9a0" stroke-opacity="0.3" stroke-width="1.2"/>
+      <g class="colina" style="--d: 0.45s">
+        <path id="colina-cercana" fill="url(#grad-cercana)" stroke="#c4f5a3" stroke-opacity="0.28" stroke-width="1.2"/>
+        <g id="textura-pasto"></g>
+      </g>
+    </svg>
+
+    <!-- Pasto de atrás -->
+    <svg class="capa pasto pasto-atras" viewBox="0 0 400 800" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+      <g id="pasto-atras"></g>
+    </svg>
+
+    <!-- El girasol -->
+    <div class="girasol">
+      <div class="resplandor"></div>
+
+      <!-- Tallo y hojas -->
+      <svg class="capa" viewBox="0 0 400 800" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+        <defs>
+          <linearGradient id="grad-tallo" gradientUnits="userSpaceOnUse" x1="0" y1="252" x2="0" y2="700">
+            <stop offset="0" stop-color="#63a449"/>
+            <stop offset="1" stop-color="#2f6a2c"/>
+          </linearGradient>
+          <linearGradient id="grad-hoja" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#2e6c2c"/>
+            <stop offset="1" stop-color="#78bf57"/>
+          </linearGradient>
+          <g id="forma-hoja">
+            <path d="M0 0Q8 -1 16 -3" fill="none" stroke="#3b7a33" stroke-width="3.4" stroke-linecap="round"/>
+            <path d="M14 -3C20 -24 46 -34 70 -26C88 -20 100 -4 108 10C90 14 70 26 48 24C30 22 16 14 14 -3Z" fill="url(#grad-hoja)"/>
+            <path d="M14 -3Q60 -6 106 9L108 10C90 14 70 26 48 24C30 22 16 14 14 -3Z" fill="#0d3515" opacity="0.28"/>
+            <g fill="none" stroke="#c2eeaa" stroke-linecap="round">
+              <path d="M14 -3Q60 -6 106 9" stroke-width="1.3" opacity="0.55"/>
+              <path d="M34 -3.6Q44 -12 52 -22M56 -3.4Q66 -11 74 -19M78 -0.8Q86 -5 92 -10M34 -3Q42 8 50 18M56 -2.5Q64 8 72 15M78 0Q85 6 90 10" stroke-width="1" opacity="0.35"/>
+            </g>
+          </g>
+        </defs>
+
+        <path class="tallo-trazo" d="M200 696C204 620 192 520 199 430C205 350 199 300 200 252" stroke="url(#grad-tallo)" stroke-width="9"/>
+        <path class="tallo-trazo" d="M200 696C204 620 192 520 199 430C205 350 199 300 200 252" stroke="#a8de8e" stroke-width="2.2" stroke-opacity="0.5" transform="translate(-2.4 0)"/>
+
+        <g transform="translate(199 598) scale(-1.1 1.1) rotate(14)"><g class="hoja" style="--d: 1.95s"><use href="#forma-hoja"/></g></g>
+        <g transform="translate(197 528) scale(1.05) rotate(-12)"><g class="hoja" style="--d: 2.25s"><use href="#forma-hoja"/></g></g>
+        <g transform="translate(197.7 452) scale(-0.85 0.85) rotate(-18)"><g class="hoja" style="--d: 2.5s"><use href="#forma-hoja"/></g></g>
+        <g transform="translate(201.4 392) scale(0.66) rotate(-28)"><g class="hoja" style="--d: 2.7s"><use href="#forma-hoja"/></g></g>
+      </svg>
+
+      <!-- Flor (pétalos y semillas los agrega girasol.js) -->
+      <div class="cabeza-pos">
+        <div class="cabeza-balanceo">
+          <svg class="cabeza" id="cabeza" viewBox="0 0 260 260" aria-hidden="true">
+            <defs>
+              <linearGradient id="grad-petalo" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0" stop-color="#e8870b"/>
+                <stop offset="0.4" stop-color="#fbb51d"/>
+                <stop offset="1" stop-color="#ffe066"/>
+              </linearGradient>
+              <linearGradient id="grad-petalo-atras" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0" stop-color="#c2600a"/>
+                <stop offset="0.45" stop-color="#e99315"/>
+                <stop offset="1" stop-color="#f8c342"/>
+              </linearGradient>
+              <linearGradient id="grad-bractea" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0" stop-color="#2b5a22"/>
+                <stop offset="1" stop-color="#74b24f"/>
+              </linearGradient>
+              <radialGradient id="grad-disco">
+                <stop offset="0" stop-color="#241004"/>
+                <stop offset="0.55" stop-color="#3a1b07"/>
+                <stop offset="0.85" stop-color="#5c3110"/>
+                <stop offset="1" stop-color="#7b4916"/>
+              </radialGradient>
+            </defs>
+            <g transform="translate(130 130)">
+              <g id="bracteas"></g>
+              <g id="petalos-atras"></g>
+              <g id="petalos-delante"></g>
+              <g class="disco">
+                <circle r="47.5" fill="url(#grad-disco)" stroke="#3a1c07" stroke-opacity="0.5" stroke-width="1.2"/>
+                <circle r="44.6" fill="none" stroke="#d08b22" stroke-width="3.6" stroke-dasharray="1.3 2.1" opacity="0.6"/>
+                <g id="semillas"></g>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="anillo" style="--d: 4.45s"></div>
+      <div class="anillo" style="--d: 4.75s"></div>
+    </div>
+
+    <!-- Pasto de adelante -->
+    <svg class="capa pasto pasto-delante" viewBox="0 0 400 800" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+      <g id="pasto-delante"></g>
+    </svg>
+
+    <!-- Plantitas -->
+    <svg class="capa" viewBox="0 0 400 800" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+      <defs>
+        <g id="brote">
+          <path d="M0 0C1 -7 -1 -14 0 -21" fill="none" stroke="#4f9a40" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M0 -19C-5 -27 -15 -27 -18 -20C-12 -14 -5 -15 0 -19Z" fill="#62b24c"/>
+          <path d="M0 -19C5 -28 16 -28 19 -21C13 -14 5 -15 0 -19Z" fill="#74c25a"/>
+          <path d="M0 -19C-1.6 -24 -0.4 -28 1.2 -29.5C2.4 -25.5 1.6 -22 0 -19Z" fill="#9ad97a"/>
+        </g>
+        <g id="mata">
+          <path d="M0 0C-4 -9 -10 -16 -19 -21C-11 -12 -5 -6 0 0Z" fill="#3f8a3a"/>
+          <path d="M0 0C-2 -12 -4 -23 -9 -33C-2 -24 1 -12 0 0Z" fill="#4f9c45"/>
+          <path d="M0 0C3 -8 10 -15 20 -19C11 -11 5 -5 0 0Z" fill="#46913f"/>
+          <path d="M0 0C1 -13 4 -26 10 -37C5 -25 3 -12 0 0Z" fill="#5aab4d"/>
+          <path d="M0 0C0 -9 0 -18 2 -27C3 -18 2 -9 0 0Z" fill="#6bbb58"/>
+        </g>
+        <g id="helecho">
+          <path d="M0 0C0 -12 3 -24 10 -31C15 -36 22 -33 21 -27C20 -22 14 -23 15 -27" fill="none" stroke="#5aa64a" stroke-width="2" stroke-linecap="round"/>
+          <path d="M1 -8C-5 -10 -9 -13 -11 -18C-6 -16 -2 -13 1 -8Z" fill="#4f9a42"/>
+          <path d="M2 -15C-3 -18 -6 -22 -7 -27C-3 -24 0 -20 2 -15Z" fill="#5eab4f"/>
+          <path d="M1 -6C6 -8 10 -11 12 -16C7 -14 3 -11 1 -6Z" fill="#46903d"/>
+        </g>
+        <g id="flor">
+          <g fill="#fff4e0">
+            <circle cx="0" cy="-2.3" r="1.9"/>
+            <circle cx="2.19" cy="-0.71" r="1.9"/>
+            <circle cx="1.35" cy="1.86" r="1.9"/>
+            <circle cx="-1.35" cy="1.86" r="1.9"/>
+            <circle cx="-2.19" cy="-0.71" r="1.9"/>
+          </g>
+          <circle r="1.2" fill="#ffc94a"/>
+        </g>
+        <g id="florecitas">
+          <path d="M0 0C-1 -8 -4 -16 -7 -24M0 0C1 -10 2 -20 4 -30M0 0C3 -6 7 -12 11 -17" fill="none" stroke="#4f9442" stroke-width="1.3" stroke-linecap="round"/>
+          <path d="M0 0C-3 -5 -8 -8 -12 -9C-7 -6 -3 -3 0 0Z" fill="#4c9a44"/>
+          <path d="M0 0C3 -4 7 -6 11 -6C7 -3 3 -1 0 0Z" fill="#58a64d"/>
+          <use href="#flor" transform="translate(-7 -24)"/>
+          <use href="#flor" transform="translate(4 -30) scale(1.1)"/>
+          <use href="#flor" transform="translate(11 -17) scale(0.85)"/>
+        </g>
+        <g id="trebol">
+          <path d="M0 0C0 -6 -1 -11 0 -15" fill="none" stroke="#4f9a40" stroke-width="1.6" stroke-linecap="round"/>
+          <g fill="#5cae4b">
+            <path d="M0 -15C-3 -19 -9 -19 -8 -14C-7 -11 -3 -12 0 -15Z"/>
+            <path d="M0 -15C3 -19 9 -19 8 -14C7 -11 3 -12 0 -15Z"/>
+            <path d="M0 -15C-4 -18 -4 -24 0 -23C4 -24 4 -18 0 -15Z"/>
+          </g>
+        </g>
+      </defs>
+      <g id="plantas"></g>
+    </svg>
+
+    <!-- Luciérnagas -->
+    <div class="luciernagas" id="luciernagas"></div>
+  </div>
+
+</body>
+</html>
